@@ -1,0 +1,474 @@
+{
+  "id": "89ad86e1-f443-4c5c-bce8-0be31a993a59",
+  "prevId": "00000000-0000-0000-0000-000000000000",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "public.cravings": {
+      "name": "cravings",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "calories_min": {
+          "name": "calories_min",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "calories_max": {
+          "name": "calories_max",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "carbs_min": {
+          "name": "carbs_min",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "carbs_max": {
+          "name": "carbs_max",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "sugar_min": {
+          "name": "sugar_min",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "sugar_max": {
+          "name": "sugar_max",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "fat_min": {
+          "name": "fat_min",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "fat_max": {
+          "name": "fat_max",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "protein_min": {
+          "name": "protein_min",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "protein_max": {
+          "name": "protein_max",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "additional_nutrition": {
+          "name": "additional_nutrition",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'{}'::jsonb"
+        }
+      },
+      "indexes": {
+        "cravings_name_idx": {
+          "name": "cravings_name_idx",
+          "columns": [
+            {
+              "expression": "name",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "cravings_calories_idx": {
+          "name": "cravings_calories_idx",
+          "columns": [
+            {
+              "expression": "calories_min",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            },
+            {
+              "expression": "calories_max",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "cravings_nutrition_idx": {
+          "name": "cravings_nutrition_idx",
+          "columns": [
+            {
+              "expression": "carbs_max",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            },
+            {
+              "expression": "protein_max",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            },
+            {
+              "expression": "sugar_max",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            },
+            {
+              "expression": "fat_max",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "cravings_name_unique": {
+          "name": "cravings_name_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "name"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.alternatives": {
+      "name": "alternatives",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "calories_min": {
+          "name": "calories_min",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "calories_max": {
+          "name": "calories_max",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "carbs_min": {
+          "name": "carbs_min",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "carbs_max": {
+          "name": "carbs_max",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "sugar_min": {
+          "name": "sugar_min",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "sugar_max": {
+          "name": "sugar_max",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "fat_min": {
+          "name": "fat_min",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "fat_max": {
+          "name": "fat_max",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "protein_min": {
+          "name": "protein_min",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "protein_max": {
+          "name": "protein_max",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "additional_nutrition": {
+          "name": "additional_nutrition",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'{}'::jsonb"
+        },
+        "dietary_tags": {
+          "name": "dietary_tags",
+          "type": "text[]",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'{}'"
+        }
+      },
+      "indexes": {
+        "alternatives_name_idx": {
+          "name": "alternatives_name_idx",
+          "columns": [
+            {
+              "expression": "name",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "alternatives_calories_idx": {
+          "name": "alternatives_calories_idx",
+          "columns": [
+            {
+              "expression": "calories_min",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            },
+            {
+              "expression": "calories_max",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "alternatives_nutrition_idx": {
+          "name": "alternatives_nutrition_idx",
+          "columns": [
+            {
+              "expression": "carbs_max",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            },
+            {
+              "expression": "protein_max",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            },
+            {
+              "expression": "sugar_max",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            },
+            {
+              "expression": "fat_max",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "alternatives_dietary_tags_idx": {
+          "name": "alternatives_dietary_tags_idx",
+          "columns": [
+            {
+              "expression": "dietary_tags",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "gin",
+          "with": {}
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "alternatives_name_unique": {
+          "name": "alternatives_name_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "name"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.cravings_alternatives": {
+      "name": "cravings_alternatives",
+      "schema": "",
+      "columns": {
+        "craving_id": {
+          "name": "craving_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "alternative_id": {
+          "name": "alternative_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {
+        "cravings_alternatives_craving_id_idx": {
+          "name": "cravings_alternatives_craving_id_idx",
+          "columns": [
+            {
+              "expression": "craving_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "cravings_alternatives_alternative_id_idx": {
+          "name": "cravings_alternatives_alternative_id_idx",
+          "columns": [
+            {
+              "expression": "alternative_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "cravings_alternatives_craving_id_cravings_id_fk": {
+          "name": "cravings_alternatives_craving_id_cravings_id_fk",
+          "tableFrom": "cravings_alternatives",
+          "tableTo": "cravings",
+          "columnsFrom": [
+            "craving_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "cravings_alternatives_alternative_id_alternatives_id_fk": {
+          "name": "cravings_alternatives_alternative_id_alternatives_id_fk",
+          "tableFrom": "cravings_alternatives",
+          "tableTo": "alternatives",
+          "columnsFrom": [
+            "alternative_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "cravings_alternatives_craving_id_alternative_id_pk": {
+          "name": "cravings_alternatives_craving_id_alternative_id_pk",
+          "columns": [
+            "craving_id",
+            "alternative_id"
+          ]
+        }
+      },
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    }
+  },
+  "enums": {},
+  "schemas": {},
+  "sequences": {},
+  "roles": {},
+  "policies": {},
+  "views": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}
